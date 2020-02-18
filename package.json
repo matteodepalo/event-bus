@@ -1,6 +1,6 @@
 {
   "name": "@matteodepalo/event-bus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight event bus for Javascript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
