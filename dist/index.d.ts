@@ -6,8 +6,7 @@ declare global {
 declare type EventName = string;
 declare type Callback = Function;
 declare class EventBus {
-    private static instance;
-    private static idCounter;
+    private idCounter;
     private subscriptions;
     private constructor();
     static get Instance(): EventBus;

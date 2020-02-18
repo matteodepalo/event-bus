@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var EventBus = /** @class */ (function () {
     function EventBus() {
+        this.idCounter = 0;
         this.subscriptions = {};
     }
     Object.defineProperty(EventBus, "Instance", {
@@ -13,7 +14,7 @@ var EventBus = /** @class */ (function () {
     });
     EventBus.prototype.subscribe = function (event, callback) {
         var _this = this;
-        var id = "event-" + EventBus.idCounter++;
+        var id = "event-" + this.idCounter++;
         if (!this.subscriptions[event]) {
             this.subscriptions[event] = {};
         }
@@ -34,7 +35,6 @@ var EventBus = /** @class */ (function () {
         Object.getOwnPropertyNames(this.subscriptions[event])
             .forEach(function (key) { return _this.subscriptions[event][key](data); });
     };
-    EventBus.idCounter = 0;
     return EventBus;
 }());
 exports.default = EventBus.Instance;

@@ -9,8 +9,7 @@ type CallbackId = string;
 type Callback = Function;
 
 class EventBus {
-  private static instance: EventBus;
-  private static idCounter = 0;
+  private idCounter = 0;
   private subscriptions!: Record<EventName, Record<CallbackId, Callback>>;
 
   private constructor() {
@@ -22,7 +21,7 @@ class EventBus {
   }
 
   subscribe(event: EventName, callback: Callback) {
-    const id = `event-${EventBus.idCounter++}` as CallbackId;
+    const id = `event-${this.idCounter++}` as CallbackId;
 
     if (!this.subscriptions[event]) {
       this.subscriptions[event] = {};
